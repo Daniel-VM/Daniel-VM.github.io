@@ -9,7 +9,8 @@ descriptionEn: "Public dataset analysis on diabetes: QC, integration, clustering
 tagsEs: ["Single-cell", "Python", "Freelance"]
 tagsEn: ["Single-cell", "Python", "Freelance"]
 media:
-  kind: placeholder
-  placeholderEs: "[ SLOT ] UMAP del análisis"
-  placeholderEn: "[ SLOT ] analysis UMAP"
+  kind: illustration
+  illustration: retina-scrna
+  placeholderEs: "en curso"
+  placeholderEn: "in progress"
 ---

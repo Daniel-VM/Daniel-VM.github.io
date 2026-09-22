@@ -25,6 +25,7 @@ const canonicalPath = localizedPath(locale, '');
   <title>{title}</title>
   <meta name="description" content={description} />
 
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="canonical" href={new URL(canonicalPath, Astro.site)} />
   <link rel="alternate" hreflang="en" href={new URL(localizedPath('en', ''), Astro.site)} />
   <link rel="alternate" hreflang="es" href={new URL(localizedPath('es', ''), Astro.site)} />
@@ -51,6 +52,7 @@ const canonicalPath = localizedPath(locale, '');
 </head>
 <body>
   <div class="bg-blueprint-grid" aria-hidden="true"></div>
+  <div class="bg-grain" aria-hidden="true"></div>
   <div style="position:relative;min-height:100vh;overflow-x:hidden">
     <Header locale={locale} dict={dict} />
     <slot />

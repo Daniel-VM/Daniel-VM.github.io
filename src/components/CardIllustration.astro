@@ -1,0 +1,274 @@
+---
+interface Props {
+  name: 'coralis' | 'local-ai' | 'hpc' | 'retina-scrna';
+  label?: string;
+}
+
+const { name, label } = Astro.props;
+---
+
+<svg viewBox="0 0 316 144" width="100%" height="100%" role="img" aria-hidden="true" class="card-illustration">
+  <defs>
+    <marker id={`arrow-${name}`} viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L8,4 L0,8 Z" class="ill-arrowhead"></path>
+    </marker>
+  </defs>
+
+  {name === 'coralis' && (
+    <g>
+      <rect x="10" y="28" width="90" height="88" class="ill-box"></rect>
+      <text x="18" y="41" class="ill-kicker">INPUT · miRNA LIST</text>
+      <text x="18" y="57" class="ill-mono">hsa-miR-28</text>
+      <text x="18" y="69" class="ill-mono">hsa-miR-13</text>
+      <text x="18" y="81" class="ill-mono">hsa-miR-528</text>
+      <text x="18" y="93" class="ill-mono-muted">+12 more</text>
+
+      <line x1="100" y1="72" x2="120" y2="72" class="ill-line" marker-end={`url(#arrow-${name})`}></line>
+
+      <rect x="122" y="14" width="66" height="116" class="ill-box-strong"></rect>
+      <g class="ill-corner">
+        <path d="M118,16 h6 M120,10 v6" />
+        <path d="M192,16 h-6 M190,10 v6" />
+        <path d="M118,128 h6 M120,134 v-6" />
+        <path d="M192,128 h-6 M190,134 v-6" />
+      </g>
+      <text x="155" y="60" text-anchor="middle" class="ill-title">CORALIS</text>
+      <text x="155" y="73" text-anchor="middle" class="ill-kicker">ENRICHMENT</text>
+      <line x1="132" y1="82" x2="178" y2="82" class="ill-line-muted"></line>
+      <text x="155" y="98" text-anchor="middle" class="ill-mono-muted">validated</text>
+      <text x="155" y="108" text-anchor="middle" class="ill-mono-muted">miRNA–target DB</text>
+
+      <line x1="188" y1="72" x2="206" y2="72" class="ill-line" marker-end={`url(#arrow-${name})`}></line>
+
+      <g>
+        <rect x="210" y="18" width="20" height="20" class="ill-box"></rect>
+        <rect x="215" y="30" width="3" height="5" class="ill-bar"></rect>
+        <rect x="220" y="26" width="3" height="9" class="ill-bar"></rect>
+        <rect x="225" y="22" width="3" height="13" class="ill-bar"></rect>
+        <text x="238" y="31" class="ill-mono">Pathways</text>
+
+        <rect x="210" y="56" width="20" height="20" class="ill-box"></rect>
+        <circle cx="216" cy="70" r="2" class="ill-dot"></circle>
+        <circle cx="226" cy="63" r="2" class="ill-dot"></circle>
+        <circle cx="226" cy="75" r="2" class="ill-dot"></circle>
+        <line x1="216" y1="70" x2="226" y2="63" class="ill-line-thin"></line>
+        <line x1="216" y1="70" x2="226" y2="75" class="ill-line-thin"></line>
+        <text x="238" y="69" class="ill-mono">Network</text>
+
+        <rect x="210" y="94" width="20" height="20" class="ill-box"></rect>
+        <line x1="210" y1="104" x2="230" y2="104" class="ill-line-thin"></line>
+        <line x1="220" y1="94" x2="220" y2="114" class="ill-line-thin"></line>
+        <text x="238" y="107" class="ill-mono">Table</text>
+      </g>
+    </g>
+  )}
+
+  {name === 'local-ai' && (
+    <g>
+      <text x="10" y="12" class="ill-kicker">LOCAL AI · NOTHING LEAVES THE LAB</text>
+      <rect x="10" y="20" width="212" height="112" class="ill-box-dashed"></rect>
+      <text x="18" y="33" class="ill-mono-muted">LAB NETWORK</text>
+
+      <rect x="20" y="42" width="88" height="30" class="ill-box"></rect>
+      <text x="64" y="58" text-anchor="middle" class="ill-node-title">Workstation</text>
+      <text x="64" y="68" text-anchor="middle" class="ill-mono-muted">GPU · on-prem</text>
+
+      <rect x="124" y="42" width="88" height="30" class="ill-box-accent-tint"></rect>
+      <text x="168" y="58" text-anchor="middle" class="ill-node-title">Model</text>
+      <text x="168" y="68" text-anchor="middle" class="ill-mono-muted">open weights</text>
+
+      <line x1="64" y1="72" x2="105" y2="101" class="ill-line-thin" marker-end={`url(#arrow-${name})`}></line>
+      <line x1="168" y1="72" x2="127" y2="101" class="ill-line-thin" marker-end={`url(#arrow-${name})`}></line>
+
+      <rect x="66" y="103" width="100" height="26" class="ill-box-strong"></rect>
+      <text x="116" y="117" text-anchor="middle" class="ill-title" style="font-size:9px">Assistant</text>
+      <text x="116" y="126" text-anchor="middle" class="ill-mono-muted">analysis · docs · code</text>
+
+      <line x1="222" y1="60" x2="248" y2="60" class="ill-line-muted"></line>
+      <line x1="234" y1="54" x2="244" y2="66" class="ill-line-muted"></line>
+      <line x1="244" y1="54" x2="234" y2="66" class="ill-line-muted"></line>
+      <rect x="248" y="44" width="60" height="30" class="ill-box"></rect>
+      <text x="278" y="60" text-anchor="middle" class="ill-node-title">Cloud</text>
+      <text x="278" y="70" text-anchor="middle" class="ill-mono-muted">not required</text>
+    </g>
+  )}
+
+  {name === 'hpc' && (
+    <g>
+      <text x="10" y="12" class="ill-kicker">HPC · SLURM CLUSTER</text>
+
+      <rect x="10" y="24" width="68" height="100" class="ill-box"></rect>
+      <text x="18" y="37" class="ill-mono-muted">JOBS</text>
+      <rect x="18" y="44" width="52" height="16" class="ill-box"></rect>
+      <rect x="18" y="64" width="52" height="16" class="ill-box"></rect>
+      <rect x="18" y="84" width="52" height="16" class="ill-box"></rect>
+      <text x="24" y="55" class="ill-mono">run_001</text>
+      <text x="24" y="75" class="ill-mono">run_002</text>
+      <text x="24" y="95" class="ill-mono">run_003</text>
+
+      <line x1="78" y1="72" x2="98" y2="72" class="ill-line" marker-end={`url(#arrow-${name})`}></line>
+
+      <rect x="100" y="18" width="66" height="112" class="ill-box-strong"></rect>
+      <text x="133" y="64" text-anchor="middle" class="ill-title">SLURM</text>
+      <text x="133" y="77" text-anchor="middle" class="ill-kicker">SCHEDULER</text>
+
+      <line x1="166" y1="72" x2="186" y2="72" class="ill-line" marker-end={`url(#arrow-${name})`}></line>
+
+      <g>
+        <rect x="190" y="22" width="116" height="26" class="ill-box"></rect>
+        <rect x="198" y="29" width="6" height="6" class="ill-cell"></rect>
+        <rect x="208" y="29" width="6" height="6" class="ill-cell"></rect>
+        <rect x="218" y="29" width="6" height="6" class="ill-cell"></rect>
+        <text x="232" y="38" class="ill-mono">Node 01</text>
+
+        <rect x="190" y="59" width="116" height="26" class="ill-box"></rect>
+        <rect x="198" y="66" width="6" height="6" class="ill-cell"></rect>
+        <rect x="208" y="66" width="6" height="6" class="ill-cell"></rect>
+        <rect x="218" y="66" width="6" height="6" class="ill-cell"></rect>
+        <text x="232" y="75" class="ill-mono">Node 02</text>
+
+        <rect x="190" y="96" width="116" height="26" class="ill-box"></rect>
+        <rect x="198" y="103" width="6" height="6" class="ill-cell"></rect>
+        <rect x="208" y="103" width="6" height="6" class="ill-cell"></rect>
+        <rect x="218" y="103" width="6" height="6" class="ill-cell"></rect>
+        <text x="232" y="112" class="ill-mono">Node 03</text>
+      </g>
+    </g>
+  )}
+
+  {name === 'retina-scrna' && (
+    <g>
+      <text x="10" y="12" class="ill-kicker">scRNA-seq · UMAP</text>
+      {label && (
+        <text x="306" y="12" text-anchor="end" class="ill-mono-muted">{label}</text>
+      )}
+
+      <line x1="24" y1="20" x2="24" y2="118" class="ill-line-muted"></line>
+      <line x1="24" y1="118" x2="300" y2="118" class="ill-line-muted"></line>
+      <text x="28" y="128" class="ill-mono-muted">UMAP-1</text>
+      <text x="10" y="24" class="ill-mono-muted">UMAP-2</text>
+
+      <ellipse cx="90" cy="52" rx="34" ry="22" class="ill-cluster"></ellipse>
+      <ellipse cx="190" cy="46" rx="28" ry="20" class="ill-cluster"></ellipse>
+      <ellipse cx="150" cy="96" rx="40" ry="20" class="ill-cluster"></ellipse>
+      <ellipse cx="250" cy="90" rx="24" ry="16" class="ill-cluster"></ellipse>
+
+      <g class="ill-scatter-a">
+        <circle cx="76" cy="46" r="1.6"></circle><circle cx="88" cy="58" r="1.6"></circle><circle cx="100" cy="48" r="1.6"></circle>
+        <circle cx="82" cy="62" r="1.6"></circle><circle cx="96" cy="60" r="1.6"></circle><circle cx="70" cy="54" r="1.6"></circle>
+        <circle cx="106" cy="56" r="1.6"></circle><circle cx="92" cy="42" r="1.6"></circle>
+      </g>
+      <g class="ill-scatter-b">
+        <circle cx="180" cy="40" r="1.6"></circle><circle cx="196" cy="50" r="1.6"></circle><circle cx="204" cy="38" r="1.6"></circle>
+        <circle cx="188" cy="54" r="1.6"></circle><circle cx="174" cy="48" r="1.6"></circle><circle cx="200" cy="44" r="1.6"></circle>
+      </g>
+      <g class="ill-scatter-c">
+        <circle cx="122" cy="92" r="1.6"></circle><circle cx="140" cy="102" r="1.6"></circle><circle cx="158" cy="90" r="1.6"></circle>
+        <circle cx="170" cy="100" r="1.6"></circle><circle cx="134" cy="86" r="1.6"></circle><circle cx="150" cy="108" r="1.6"></circle>
+        <circle cx="162" cy="98" r="1.6"></circle>
+      </g>
+      <g class="ill-scatter-d">
+        <circle cx="238" cy="86" r="1.6"></circle><circle cx="252" cy="94" r="1.6"></circle><circle cx="260" cy="84" r="1.6"></circle>
+        <circle cx="246" cy="98" r="1.6"></circle>
+      </g>
+
+      <g>
+        <circle cx="236" cy="22" r="2" class="ill-legend-a"></circle>
+        <text x="242" y="25" class="ill-mono-muted">Endothelial</text>
+        <circle cx="236" cy="32" r="2" class="ill-legend-b"></circle>
+        <text x="242" y="35" class="ill-mono-muted">Müller glia</text>
+        <circle cx="236" cy="42" r="2" class="ill-legend-c"></circle>
+        <text x="242" y="45" class="ill-mono-muted">Pericyte</text>
+        <circle cx="236" cy="52" r="2" class="ill-legend-d"></circle>
+        <text x="242" y="55" class="ill-mono-muted">Astrocyte</text>
+      </g>
+    </g>
+  )}
+</svg>
+
+<style>
+  .card-illustration {
+    display: block;
+  }
+  .ill-box {
+    fill: none;
+    stroke: var(--color-divider);
+    stroke-width: 1;
+  }
+  .ill-box-strong {
+    fill: none;
+    stroke: var(--color-accent);
+    stroke-width: 1.2;
+  }
+  .ill-box-accent-tint {
+    fill: var(--color-accent-100);
+    stroke: var(--color-accent-300);
+    stroke-width: 1;
+  }
+  .ill-box-dashed {
+    fill: none;
+    stroke: var(--color-accent-400);
+    stroke-width: 1;
+    stroke-dasharray: 3 2;
+  }
+  .ill-corner path {
+    fill: none;
+    stroke: color-mix(in srgb, var(--color-text) 55%, transparent);
+    stroke-width: 1;
+  }
+  .ill-line {
+    stroke: var(--color-accent);
+    stroke-width: 1.2;
+    fill: none;
+  }
+  .ill-line-thin {
+    stroke: var(--color-accent-500);
+    stroke-width: 1;
+    fill: none;
+  }
+  .ill-line-muted {
+    stroke: var(--color-divider);
+    stroke-width: 1;
+    fill: none;
+  }
+  .ill-arrowhead { fill: var(--color-accent); }
+  .ill-dot { fill: var(--color-accent); }
+  .ill-bar { fill: var(--color-accent-300); }
+  .ill-cell { fill: var(--color-accent-300); }
+  .ill-kicker {
+    font: 400 6.5px/1 ui-monospace, Menlo, monospace;
+    letter-spacing: 0.08em;
+    fill: var(--color-accent);
+    text-transform: uppercase;
+  }
+  .ill-mono {
+    font: 400 7px/1 ui-monospace, Menlo, monospace;
+    fill: var(--color-neutral-700);
+  }
+  .ill-mono-muted {
+    font: 400 6.5px/1 ui-monospace, Menlo, monospace;
+    fill: var(--color-neutral-600);
+  }
+  .ill-title {
+    font: 600 12px/1 var(--font-heading);
+    fill: var(--color-text);
+  }
+  .ill-node-title {
+    font: 500 7.5px/1 var(--font-body);
+    fill: var(--color-text);
+  }
+  .ill-cluster {
+    fill: none;
+    stroke: var(--color-divider);
+    stroke-width: 1;
+    stroke-dasharray: 2 2;
+  }
+  .ill-scatter-a circle { fill: var(--color-accent); }
+  .ill-scatter-b circle { fill: var(--color-accent-700); }
+  .ill-scatter-c circle { fill: var(--color-neutral-600); }
+  .ill-scatter-d circle { fill: var(--color-accent-400); }
+  .ill-legend-a { fill: var(--color-accent); }
+  .ill-legend-b { fill: var(--color-accent-700); }
+  .ill-legend-c { fill: var(--color-neutral-600); }
+  .ill-legend-d { fill: var(--color-accent-400); }
+</style>

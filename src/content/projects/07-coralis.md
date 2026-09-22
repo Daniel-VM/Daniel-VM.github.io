@@ -12,6 +12,6 @@ link: "https://github.com/Daniel-VM"
 linkLabelEs: "github"
 linkLabelEn: "github"
 media:
-  kind: contain
-  src: "coralis.png"
+  kind: illustration
+  illustration: coralis
 ---

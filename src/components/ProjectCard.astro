@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import type { Locale } from '../i18n/ui';
+import CardIllustration from './CardIllustration.astro';
 
 interface Props {
   project: CollectionEntry<'projects'>;
@@ -21,15 +22,15 @@ const placeholder = es ? p.media.placeholderEs : p.media.placeholderEn;
 ---
 
 <article
-  class="card blueprint fade-in project-card"
+  class="card blueprint fade-in project-card hover-lift"
   data-project-cats={p.cats.join(' ')}
-  style="padding:20px;gap:11px;transition:border-color .25s,box-shadow .25s"
+  style="padding:20px;gap:11px"
 >
   <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
 
   {p.media.kind === 'cover' && (
-    <div style="height:144px;overflow:hidden;border:1px solid var(--color-divider-soft);background:var(--color-neutral-100)">
-      <img src={`/assets/${p.media.src}`} alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block" />
+    <div class="media-box" style="height:144px;overflow:hidden;border:1px solid var(--color-divider-soft);background:var(--color-neutral-100)">
+      <img class="media-img" src={`/assets/${p.media.src}`} alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block" />
     </div>
   )}
   {p.media.kind === 'contain' && (
@@ -38,13 +39,13 @@ const placeholder = es ? p.media.placeholderEs : p.media.placeholderEn;
     </div>
   )}
   {p.media.kind === 'duo' && (
-    <div class="duotone" style="height:144px;overflow:hidden;border:1px solid var(--color-divider-soft);background:var(--color-neutral-100)">
-      <img src={`/assets/${p.media.src}`} alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block" />
+    <div class="duotone media-box" style="height:144px;overflow:hidden;border:1px solid var(--color-divider-soft);background:var(--color-neutral-100)">
+      <img class="media-img" src={`/assets/${p.media.src}`} alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block" />
     </div>
   )}
   {p.media.kind === 'video' && (
-    <div style="height:144px;overflow:hidden;border:1px solid var(--color-divider-soft);background:var(--color-neutral-100)">
-      <video src={`/assets/${p.media.src}`} data-autoplay autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block"></video>
+    <div class="media-box" style="height:144px;overflow:hidden;border:1px solid var(--color-divider-soft);background:var(--color-neutral-100)">
+      <video class="media-img" src={`/assets/${p.media.src}`} data-autoplay autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block"></video>
     </div>
   )}
   {p.media.kind === 'placeholder' && (
@@ -53,6 +54,11 @@ const placeholder = es ? p.media.placeholderEs : p.media.placeholderEn;
       style="height:144px;display:grid;place-items:center;border:1px solid var(--color-divider-soft);font:400 10px/1.5 ui-monospace,Menlo,monospace;letter-spacing:.07em;color:var(--color-neutral-700);text-align:center;padding:10px"
     >
       {placeholder}
+    </div>
+  )}
+  {p.media.kind === 'illustration' && p.media.illustration && (
+    <div style="height:144px;overflow:hidden;border:1px solid var(--color-divider-soft);background:var(--color-bg);padding:10px">
+      <CardIllustration name={p.media.illustration} label={placeholder} />
     </div>
   )}
 
@@ -88,9 +94,11 @@ const placeholder = es ? p.media.placeholderEs : p.media.placeholderEn;
 </article>
 
 <style>
-  .project-card:hover {
-    border-color: var(--color-accent);
-    box-shadow: var(--shadow-md);
+  .media-img {
+    transition: transform 0.4s var(--ease);
+  }
+  .project-card:hover .media-img {
+    transform: scale(1.05);
   }
   .project-card a:hover {
     color: var(--color-accent) !important;

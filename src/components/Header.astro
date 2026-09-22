@@ -23,28 +23,29 @@ const nav = [
   style="backdrop-filter:blur(10px);background:color-mix(in srgb, var(--color-bg) 86%, transparent);border-color:var(--color-divider)"
 >
   <div id="scroll-progress"></div>
-  <nav class="nav flex items-center gap-[22px]" style="max-width:1180px;margin:0 auto;padding:12px 28px">
+  <nav class="nav-grid" style="max-width:1180px;margin:0 auto;padding:12px 28px">
     <a
       href="#top"
       class="nav-brand"
-      style="margin-right:auto;display:flex;align-items:baseline;gap:9px;font-size:17px;letter-spacing:.01em;color:var(--color-text)"
+      style="grid-area:brand;display:flex;align-items:baseline;gap:9px;font-size:17px;letter-spacing:.01em;color:var(--color-text)"
     >
       <span style="display:inline-block;width:9px;height:9px;background:var(--color-accent)"></span>
-      DANIEL VALLE MILLARES
+      DANIEL V. MILLARES
       <span style="font:400 11px/1 ui-monospace,Menlo,monospace;color:var(--color-neutral-600);letter-spacing:.1em">PhD</span>
     </a>
-    <div class="flex flex-wrap items-center gap-5">
+    <div class="nav-links" style="grid-area:links">
       {nav.map((n) => (
         <a
           href={`#${n.id}`}
           data-nav-link={n.id}
-          style="font-family:var(--font-heading);font-size:15px;letter-spacing:.03em;text-transform:uppercase;padding:2px 0;border-bottom:1px solid transparent;transition:color .2s,border-color .2s;color:var(--color-text)"
+          class="nav-link"
+          style="font-family:var(--font-heading);font-size:15px;letter-spacing:.03em;text-transform:uppercase;padding:2px 0;color:var(--color-text)"
         >
           {n.label}
         </a>
       ))}
     </div>
-    <div class="seg flex-none">
+    <div class="seg" style="grid-area:lang">
       <a
         href="/"
         data-lang-switch="en"
@@ -68,12 +69,62 @@ const nav = [
 </header>
 
 <style>
+  .nav-grid {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: "brand links lang";
+    align-items: center;
+    column-gap: 22px;
+  }
+  .nav-links {
+    grid-area: links;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+  }
+  @media (max-width: 860px) {
+    .nav-grid {
+      grid-template-columns: 1fr auto;
+      grid-template-areas: "brand lang" "links links";
+      row-gap: 12px;
+    }
+    .nav-links {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      gap: 18px;
+      -webkit-overflow-scrolling: touch;
+      mask-image: linear-gradient(to right, black calc(100% - 24px), transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, black calc(100% - 24px), transparent 100%);
+    }
+  }
   .seg-opt[aria-current='page'] {
     background: var(--color-accent);
     color: var(--color-bg);
   }
-  .nav a:hover {
+  .nav-link {
+    position: relative;
+    white-space: nowrap;
+    transition: color var(--duration) var(--ease);
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -3px;
+    height: 1px;
+    background: var(--color-accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--duration) var(--ease);
+  }
+  .nav-link:hover,
+  .nav-link[aria-current='page'] {
     color: var(--color-accent) !important;
-    border-color: var(--color-accent) !important;
+  }
+  .nav-link:hover::after,
+  .nav-link[aria-current='page']::after {
+    transform: scaleX(1);
   }
 </style>

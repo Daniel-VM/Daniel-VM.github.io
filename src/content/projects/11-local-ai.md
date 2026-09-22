@@ -10,6 +10,6 @@ descriptionEn: "AI assistants running inside the lab, with no data leaving it: s
 tagsEs: ["IA", "Privacidad", "Local"]
 tagsEn: ["AI", "Privacy", "On-prem"]
 media:
-  kind: contain
-  src: "gen-local-ai.png"
+  kind: illustration
+  illustration: local-ai
 ---

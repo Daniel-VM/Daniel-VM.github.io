@@ -45,11 +45,15 @@
   --shadow-sm: 0 1px 2px color-mix(in srgb, var(--color-neutral-900) 14%, transparent);
   --shadow-md: 0 3px 10px color-mix(in srgb, var(--color-neutral-900) 16%, transparent);
   --shadow-lg: 0 12px 32px color-mix(in srgb, var(--color-neutral-900) 22%, transparent);
+  --shadow-glow: 0 0 0 1px color-mix(in srgb, var(--color-accent) 25%, transparent), 0 10px 24px -8px color-mix(in srgb, var(--color-accent-900) 45%, transparent);
 
   /* Composed, token-derived translucencies — never a loose hex. */
   --color-divider: color-mix(in srgb, var(--color-text) 16%, transparent);
   --color-divider-soft: color-mix(in srgb, var(--color-text) 12%, transparent);
   --color-divider-faint: color-mix(in srgb, var(--color-text) 8%, transparent);
+
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration: 0.22s;
 }
 
 /* ── Base ──────────────────────────────────────────────────────────── */
@@ -138,12 +142,13 @@ figure { margin: 0; }
   border: 1px solid var(--color-divider);
   border-radius: 0;
   white-space: nowrap;
+  transition: background var(--duration) var(--ease), border-color var(--duration) var(--ease), color var(--duration) var(--ease), transform var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
 }
 .btn-primary { background: var(--color-accent); color: var(--color-bg); border-color: var(--color-accent); }
-.btn-primary:hover { background: var(--color-accent-600); color: var(--color-bg); }
-.btn-primary:active { background: var(--color-accent-700); }
+.btn-primary:hover { background: var(--color-accent-600); color: var(--color-bg); box-shadow: var(--shadow-glow); transform: translateY(-1px); }
+.btn-primary:active { background: var(--color-accent-700); transform: translateY(0); }
 .btn-secondary { border-color: var(--color-divider); color: var(--color-text); }
-.btn-secondary:hover { background: color-mix(in srgb, var(--color-text) 7%, transparent); color: var(--color-text); }
+.btn-secondary:hover { background: color-mix(in srgb, var(--color-text) 7%, transparent); color: var(--color-text); border-color: var(--color-accent); transform: translateY(-1px); }
 
 /* ── Segmented control ────────────────────────────────────────────── */
 .seg {
@@ -159,6 +164,7 @@ figure { margin: 0; }
   gap: 6px;
   cursor: pointer;
   color: var(--color-text);
+  transition: background var(--duration) var(--ease), color var(--duration) var(--ease);
 }
 .seg-opt + .seg-opt { border-left: 1px solid var(--color-divider); }
 .seg-opt:has(input:checked) { background: var(--color-accent); color: var(--color-bg); }
@@ -215,12 +221,36 @@ figure { margin: 0; }
 .table td { border-bottom: 1px solid var(--color-divider-faint); }
 .table tbody tr:hover { background: color-mix(in srgb, var(--color-text) 4%, transparent); }
 
+/* ── Section kicker — numbered badge + label, the site's recurring mark ── */
+.section-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 12px;
+}
+.section-kicker-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex: none;
+  border: 1px solid var(--kicker-color, var(--color-accent));
+  color: var(--kicker-color, var(--color-accent));
+  font: 400 10px/1 ui-monospace, Menlo, monospace;
+}
+.section-kicker-label {
+  font: 400 11px/1 ui-monospace, Menlo, monospace;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--kicker-color, var(--color-accent));
+}
+
 /* ── Nav ───────────────────────────────────────────────────────────── */
 .nav-brand {
   font-family: var(--font-heading);
   font-weight: var(--font-heading-weight);
 }
-.nav a[aria-current="page"] { color: var(--color-accent); border-color: var(--color-accent) !important; }
 
 /* ── Decorative fixed grid background ─────────────────────────────── */
 .bg-blueprint-grid {
@@ -232,6 +262,20 @@ figure { margin: 0; }
     linear-gradient(color-mix(in srgb, var(--color-accent) 7%, transparent) 1px, transparent 1px),
     linear-gradient(90deg, color-mix(in srgb, var(--color-accent) 7%, transparent) 1px, transparent 1px);
   background-size: 64px 64px;
+  mask-image: radial-gradient(120% 70% at 50% 0%, black 0%, black 35%, transparent 92%);
+  -webkit-mask-image: radial-gradient(120% 70% at 50% 0%, black 0%, black 35%, transparent 92%);
+}
+
+/* ── Paper grain — keeps the flat steel/paper palette from reading as
+     a plain digital template; a whisper of print texture, not a filter. ── */
+.bg-grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 /* ── Placeholder media hatch ──────────────────────────────────────── */
@@ -247,7 +291,26 @@ figure { margin: 0; }
   height: 2px;
   width: 0;
   background: var(--color-accent);
+  box-shadow: 0 0 6px color-mix(in srgb, var(--color-accent) 60%, transparent);
   transition: width 0.08s linear;
+}
+
+/* ── Shared hover-lift for card-like elements ─────────────────────── */
+.hover-lift {
+  transition: border-color var(--duration) var(--ease), box-shadow var(--duration) var(--ease), transform var(--duration) var(--ease);
+}
+.hover-lift:hover {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+/* ── KPI plate cell ────────────────────────────────────────────────── */
+.kpi-cell {
+  transition: background var(--duration) var(--ease);
+}
+.kpi-cell:hover {
+  background: color-mix(in srgb, var(--color-accent) 6%, transparent);
 }
 
 /* ── Reveal-on-scroll ──────────────────────────────────────────────── */

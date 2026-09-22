@@ -12,6 +12,6 @@ link: "https://mepram-datahub.ciberisciii.es/"
 linkLabelEs: "datahub"
 linkLabelEn: "datahub"
 media:
-  kind: contain
-  src: "gen-backend-apis.png"
+  kind: cover
+  src: "pathocore-explorer.png"
 ---

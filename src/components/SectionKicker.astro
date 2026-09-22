@@ -1,0 +1,14 @@
+---
+interface Props {
+  n: string;
+  label: string;
+  dark?: boolean;
+}
+
+const { n, label, dark = false } = Astro.props;
+---
+
+<p class="section-kicker" style={dark ? '--kicker-color: var(--color-accent-400)' : ''}>
+  <span class="section-kicker-badge">{n}</span>
+  <span class="section-kicker-label">{label}</span>
+</p>

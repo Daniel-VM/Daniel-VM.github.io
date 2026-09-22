@@ -1,8 +1,9 @@
 import { defineCollection, z } from 'astro:content';
 
 const media = z.object({
-  kind: z.enum(['cover', 'contain', 'duo', 'video', 'placeholder']),
+  kind: z.enum(['cover', 'contain', 'duo', 'video', 'placeholder', 'illustration']),
   src: z.string().optional(),
+  illustration: z.enum(['coralis', 'local-ai', 'hpc', 'retina-scrna']).optional(),
   placeholderEn: z.string().optional(),
   placeholderEs: z.string().optional(),
 });
@@ -64,6 +65,7 @@ const courses = defineCollection({
     where: z.string(),
     hoursEs: z.string(),
     hoursEn: z.string(),
+    status: z.enum(['delivered', 'prep']).default('delivered'),
   }),
 });
 

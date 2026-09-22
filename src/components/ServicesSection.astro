@@ -1,4 +1,6 @@
 ---
+import SectionKicker from './SectionKicker.astro';
+
 interface Props {
   dict: ReturnType<typeof import('../i18n/ui').t>;
 }
@@ -6,13 +8,14 @@ interface Props {
 const { dict } = Astro.props;
 ---
 
-<section id="servicios" style="background:var(--color-accent-900);color:var(--color-bg);position:relative">
+<section
+  id="servicios"
+  style="background:radial-gradient(120% 140% at 12% -10%, color-mix(in srgb, var(--color-accent-700) 55%, var(--color-accent-900)) 0%, var(--color-accent-900) 55%);color:var(--color-bg);position:relative"
+>
   <div class="reveal" style="max-width:1180px;margin:0 auto;padding:64px 28px">
     <div class="flex flex-wrap items-end justify-between gap-[30px]" style="margin-bottom:34px">
       <div>
-        <p style="font:400 11px/1 ui-monospace,Menlo,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--color-accent-400);margin:0 0 10px">
-          02 / {dict.navSvc}
-        </p>
+        <SectionKicker n="02" label={dict.navSvc} dark />
         <h2 style="font-size:clamp(30px,3.8vw,48px);margin:0;letter-spacing:-.015em;color:var(--color-bg)">{dict.svcTitle}</h2>
       </div>
       <p style="max-width:42ch;font-size:14.5px;line-height:1.6;color:color-mix(in srgb, var(--color-bg) 72%, transparent);margin:0">
@@ -24,7 +27,7 @@ const { dict } = Astro.props;
       {dict.svcs.map((s) => (
         <article
           class="blueprint svc-card"
-          style="position:relative;border:1px solid color-mix(in srgb, var(--color-bg) 28%, transparent);color:color-mix(in srgb, var(--color-bg) 60%, transparent);padding:22px 20px;display:flex;flex-direction:column;gap:10px;transition:border-color .25s,background .25s"
+          style="position:relative;border:1px solid color-mix(in srgb, var(--color-bg) 28%, transparent);color:color-mix(in srgb, var(--color-bg) 60%, transparent);padding:22px 20px;display:flex;flex-direction:column;gap:10px"
         >
           <i class="corner tl svc-corner"></i><i class="corner tr svc-corner"></i><i class="corner bl svc-corner"></i><i class="corner br svc-corner"></i>
           <div style="font:400 10.5px/1 ui-monospace,Menlo,monospace;letter-spacing:.14em;color:var(--color-accent-400)">{s.no}</div>
@@ -54,7 +57,7 @@ const { dict } = Astro.props;
       </a>
       <a
         class="btn"
-        href="https://omilinx.io"
+        href="https://omilinx.tailc8ab8e.ts.net/"
         target="_blank"
         rel="noopener"
         style="border-color:color-mix(in srgb, var(--color-bg) 40%, transparent);color:var(--color-bg);padding:13px 22px;font-size:14px;letter-spacing:.06em;text-transform:uppercase"
@@ -76,8 +79,13 @@ const { dict } = Astro.props;
 
 <style>
   .svc-corner { color: color-mix(in srgb, var(--color-bg) 65%, transparent); }
+  .svc-card {
+    transition: border-color var(--duration) var(--ease), background var(--duration) var(--ease), transform var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
+  }
   .svc-card:hover {
     border-color: var(--color-accent-400) !important;
     background: color-mix(in srgb, var(--color-bg) 5%, transparent);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px -10px color-mix(in srgb, var(--color-neutral-900) 45%, transparent);
   }
 </style>

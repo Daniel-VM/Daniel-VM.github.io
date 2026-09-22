@@ -12,6 +12,6 @@ link: "https://biplat.ciberinfec.es/"
 linkLabelEs: "biplat.ciberinfec.es"
 linkLabelEn: "biplat.ciberinfec.es"
 media:
-  kind: cover
-  src: "hpc-ciber.png"
+  kind: illustration
+  illustration: hpc
 ---

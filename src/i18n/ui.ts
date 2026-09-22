@@ -4,10 +4,10 @@ export const defaultLocale: Locale = 'en';
 
 export const ui = {
   en: {
-    kicker: 'Bioinformatics Engineer · Madrid',
-    heroA: 'Genomics at scale',
-    heroB: 'needs a system behind it.',
-    heroP: 'I build that system: pipelines, infrastructure and data models that take a lab from a handful of samples to thousands without breaking — in surveillance, clinics and research.',
+    kicker: 'Bioinformatics Engineer',
+    heroA: 'Bioinformatics Pipelines, software,',
+    heroB: 'platforms',
+    heroP: 'I design and run the infrastructure genomic data depends on: cloud or in-house systems, web platforms, data modelling and standardisation. Built first for pathogen surveillance, it now handles pretty much any dataset a lab throws at it.',
     cta1: 'Services',
     cta2: 'My path',
     cta3: 'Let’s talk on LinkedIn',
@@ -73,9 +73,9 @@ export const ui = {
   },
   es: {
     kicker: 'Bioinformatics Engineer · Madrid',
-    heroA: 'La genómica a gran escala',
-    heroB: 'necesita un sistema detrás.',
-    heroP: 'Yo lo construyo: pipelines, infraestructura y modelos de datos para pasar de unas pocas muestras a miles sin que nada se rompa — en vigilancia, en clínica y en investigación.',
+    heroA: 'Pipelines, plataformas,',
+    heroB: 'hechas para durar.',
+    heroP: 'Monto y mantengo la infraestructura que necesita el análisis genómico: nube o infraestructura propia, plataformas web, modelado y estandarización de datos. Nació para vigilancia de patógenos y hoy aguanta cualquier tipo de dato que necesite un laboratorio.',
     cta1: 'Servicios',
     cta2: 'Mi camino',
     cta3: 'Hablemos por LinkedIn',
