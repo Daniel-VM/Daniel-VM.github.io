@@ -1,0 +1,61 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import type { Locale } from '../i18n/ui';
+import { t, localizedPath } from '../i18n/ui';
+import '../styles/global.css';
+
+interface Props {
+  locale: Locale;
+  title: string;
+  description: string;
+}
+
+const { locale, title, description } = Astro.props;
+const dict = t(locale);
+const canonicalPath = localizedPath(locale, '');
+---
+
+<!doctype html>
+<html lang={locale}>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+
+  <link rel="canonical" href={new URL(canonicalPath, Astro.site)} />
+  <link rel="alternate" hreflang="en" href={new URL(localizedPath('en', ''), Astro.site)} />
+  <link rel="alternate" hreflang="es" href={new URL(localizedPath('es', ''), Astro.site)} />
+  <link rel="alternate" hreflang="x-default" href={new URL(localizedPath('en', ''), Astro.site)} />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&family=Barlow+Condensed:wght@400;600&display=swap"
+  />
+
+  <ClientRouter />
+
+  <script is:inline define:vars={{ locale }}>
+    try {
+      const stored = localStorage.getItem('dvm-lang');
+      if (stored && stored !== locale) {
+        const target = stored === 'es' ? '/es/' : '/';
+        if (location.pathname !== target) location.replace(target);
+      }
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <div class="bg-blueprint-grid" aria-hidden="true"></div>
+  <div style="position:relative;min-height:100vh;overflow-x:hidden">
+    <Header locale={locale} dict={dict} />
+    <slot />
+    <Footer locale={locale} dict={dict} />
+  </div>
+  <script src="../scripts/site.js"></script>
+</body>
+</html>

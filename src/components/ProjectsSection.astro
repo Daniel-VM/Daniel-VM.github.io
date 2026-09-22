@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+import ProjectCard from './ProjectCard.astro';
+import type { Locale } from '../i18n/ui';
+
+interface Props {
+  locale: Locale;
+  dict: ReturnType<typeof import('../i18n/ui').t>;
+}
+
+const { locale, dict } = Astro.props;
+
+const projects = (await getCollection('projects')).sort((a, b) => a.id.localeCompare(b.id));
+
+const count = (cat: string) =>
+  cat === 'all' ? projects.length : projects.filter((p) => p.data.cats.includes(cat as never)).length;
+
+const filters = dict.filters.map(([key, label]) => ({ key, label, n: count(key) }));
+---
+
+<section id="proyectos" class="reveal" style="padding:46px 0 10px;border-top:1px solid var(--color-divider)">
+  <div class="flex flex-wrap items-end justify-between gap-6" style="margin-bottom:24px">
+    <div>
+      <p style="font:400 11px/1 ui-monospace,Menlo,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--color-accent);margin:0 0 10px">
+        01 / {dict.navProj}
+      </p>
+      <h2 style="font-size:clamp(30px,3.6vw,44px);margin:0;letter-spacing:-.015em">{dict.projTitle}</h2>
+    </div>
+    <p style="max-width:40ch;font-size:14px;line-height:1.6;color:var(--color-neutral-700);margin:0">{dict.projSub}</p>
+  </div>
+
+  <div class="seg flex-wrap" style="margin-bottom:26px">
+    {filters.map((f, i) => (
+      <label class="seg-opt" style="font-family:var(--font-heading);font-size:14px;letter-spacing:.05em;text-transform:uppercase;padding:8px 14px">
+        <input type="radio" name="pfilter" value={f.key} checked={i === 0} data-project-filter />
+        {f.label}
+        <span style="font:400 10px/1 ui-monospace,Menlo,monospace;opacity:.6;margin-left:2px">{f.n}</span>
+      </label>
+    ))}
+  </div>
+
+  <div data-project-grid style="display:grid;grid-template-columns:repeat(auto-fill,minmax(316px,1fr));gap:20px;align-items:stretch">
+    {projects.map((project) => (
+      <ProjectCard project={project} locale={locale} />
+    ))}
+  </div>
+</section>

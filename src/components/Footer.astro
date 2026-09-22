@@ -1,0 +1,47 @@
+---
+import type { Locale } from '../i18n/ui';
+
+interface Props {
+  locale: Locale;
+  dict: ReturnType<typeof import('../i18n/ui').t>;
+}
+
+const { dict } = Astro.props;
+---
+
+<footer style="max-width:1180px;margin:0 auto;padding:44px 28px 56px">
+  <div
+    class="flex flex-wrap items-baseline justify-between gap-5"
+    style="border-top:1px solid var(--color-divider);padding-top:22px"
+  >
+    <p style="font:400 11.5px/1.6 ui-monospace,Menlo,monospace;color:var(--color-neutral-700);margin:0">
+      © 2026 Daniel Valle Millares · {dict.footNote}
+    </p>
+    <div class="flex flex-wrap gap-[18px]">
+      <a
+        href="https://github.com/Daniel-VM"
+        target="_blank"
+        rel="noopener"
+        style="font-family:var(--font-heading);font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-text)"
+      >
+        GitHub
+      </a>
+      <a
+        href="https://www.linkedin.com/in/daniel-v-millares-239b27185/"
+        target="_blank"
+        rel="noopener"
+        style="font-family:var(--font-heading);font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-text)"
+      >
+        LinkedIn
+      </a>
+      <a
+        href="https://nf-co.re/bacass"
+        target="_blank"
+        rel="noopener"
+        style="font-family:var(--font-heading);font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-text)"
+      >
+        nf-core
+      </a>
+    </div>
+  </div>
+</footer>

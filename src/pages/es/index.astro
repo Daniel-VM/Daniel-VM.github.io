@@ -1,0 +1,32 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import ProjectsSection from '../../components/ProjectsSection.astro';
+import ServicesSection from '../../components/ServicesSection.astro';
+import PathSection from '../../components/PathSection.astro';
+import OpenSourceSection from '../../components/OpenSourceSection.astro';
+import CommunitySection from '../../components/CommunitySection.astro';
+import StackSection from '../../components/StackSection.astro';
+import { t } from '../../i18n/ui';
+
+const locale = 'es' as const;
+const dict = t(locale);
+---
+
+<Layout
+  locale={locale}
+  title="Daniel Valle Millares, PhD — Ingeniero en Bioinformática"
+  description={dict.heroP}
+>
+  <main id="top" style="max-width:1180px;margin:0 auto;padding:0 28px 0">
+    <Hero dict={dict} />
+    <ProjectsSection locale={locale} dict={dict} />
+  </main>
+  <ServicesSection dict={dict} />
+  <div style="max-width:1180px;margin:0 auto;padding:0 28px">
+    <PathSection locale={locale} dict={dict} />
+    <OpenSourceSection locale={locale} dict={dict} />
+    <CommunitySection locale={locale} dict={dict} />
+  </div>
+  <StackSection dict={dict} />
+</Layout>

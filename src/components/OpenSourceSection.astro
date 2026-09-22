@@ -1,0 +1,63 @@
+---
+import { getCollection } from 'astro:content';
+import type { Locale } from '../i18n/ui';
+
+interface Props {
+  locale: Locale;
+  dict: ReturnType<typeof import('../i18n/ui').t>;
+}
+
+const { locale, dict } = Astro.props;
+const es = locale === 'es';
+
+const os = (await getCollection('opensource')).sort((a, b) => a.id.localeCompare(b.id));
+---
+
+<section id="open-source" class="reveal" style="padding:56px 0;border-top:1px solid var(--color-divider)">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:44px;align-items:start">
+    <div style="position:sticky;top:96px">
+      <p style="font:400 11px/1 ui-monospace,Menlo,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--color-accent);margin:0 0 10px">
+        04 / {dict.navOS}
+      </p>
+      <h2 style="font-size:clamp(28px,3.2vw,40px);margin:0 0 12px;letter-spacing:-.015em">{dict.osTitle}</h2>
+      <p style="font-size:14.5px;line-height:1.6;color:var(--color-neutral-700);margin:0">{dict.osSub}</p>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th style="width:23%;padding:var(--space-2)">{dict.thProject}</th>
+          <th style="padding:var(--space-2)">{dict.thRole}</th>
+          <th style="width:16%;padding:var(--space-2)">{dict.thLink}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {os.map((o) => (
+          <tr>
+            <td style="padding:13px 8px">
+              <div style="font:600 17px/1.15 var(--font-heading)">{o.data.name}</div>
+              <div style="font:400 10.5px/1 ui-monospace,Menlo,monospace;color:var(--color-neutral-600);margin-top:4px">{o.data.kind}</div>
+            </td>
+            <td style="padding:13px 8px;font-size:13.5px;line-height:1.5;color:var(--color-neutral-800)">
+              {es ? o.data.textEs : o.data.textEn}
+            </td>
+            <td style="padding:13px 8px">
+              <a
+                href={o.data.link}
+                target="_blank"
+                rel="noopener"
+                class="os-link"
+                style="font:400 11.5px/1 ui-monospace,Menlo,monospace;color:var(--color-accent-700);border-bottom:1px solid color-mix(in srgb, var(--color-accent-700) 30%, transparent);white-space:nowrap"
+              >
+                {o.data.host} ↗
+              </a>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<style>
+  .os-link:hover { color: var(--color-accent) !important; border-color: var(--color-accent) !important; }
+</style>

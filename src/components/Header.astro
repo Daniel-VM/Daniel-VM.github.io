@@ -1,0 +1,79 @@
+---
+import type { Locale } from '../i18n/ui';
+
+interface Props {
+  locale: Locale;
+  dict: ReturnType<typeof import('../i18n/ui').t>;
+}
+
+const { locale, dict } = Astro.props;
+
+const nav = [
+  { id: 'proyectos', label: dict.navProj },
+  { id: 'servicios', label: dict.navSvc },
+  { id: 'trayectoria', label: dict.navRoad },
+  { id: 'open-source', label: dict.navOS },
+  { id: 'comunidad', label: dict.navCom },
+  { id: 'stack', label: dict.navStack },
+];
+---
+
+<header
+  class="sticky top-0 z-40 border-b"
+  style="backdrop-filter:blur(10px);background:color-mix(in srgb, var(--color-bg) 86%, transparent);border-color:var(--color-divider)"
+>
+  <div id="scroll-progress"></div>
+  <nav class="nav flex items-center gap-[22px]" style="max-width:1180px;margin:0 auto;padding:12px 28px">
+    <a
+      href="#top"
+      class="nav-brand"
+      style="margin-right:auto;display:flex;align-items:baseline;gap:9px;font-size:17px;letter-spacing:.01em;color:var(--color-text)"
+    >
+      <span style="display:inline-block;width:9px;height:9px;background:var(--color-accent)"></span>
+      DANIEL VALLE MILLARES
+      <span style="font:400 11px/1 ui-monospace,Menlo,monospace;color:var(--color-neutral-600);letter-spacing:.1em">PhD</span>
+    </a>
+    <div class="flex flex-wrap items-center gap-5">
+      {nav.map((n) => (
+        <a
+          href={`#${n.id}`}
+          data-nav-link={n.id}
+          style="font-family:var(--font-heading);font-size:15px;letter-spacing:.03em;text-transform:uppercase;padding:2px 0;border-bottom:1px solid transparent;transition:color .2s,border-color .2s;color:var(--color-text)"
+        >
+          {n.label}
+        </a>
+      ))}
+    </div>
+    <div class="seg flex-none">
+      <a
+        href="/"
+        data-lang-switch="en"
+        aria-current={locale === 'en' ? 'page' : undefined}
+        class="seg-opt"
+        style="font:600 12px/1 var(--font-heading);letter-spacing:.08em;padding:6px 10px"
+      >
+        EN
+      </a>
+      <a
+        href="/es/"
+        data-lang-switch="es"
+        aria-current={locale === 'es' ? 'page' : undefined}
+        class="seg-opt"
+        style="font:600 12px/1 var(--font-heading);letter-spacing:.08em;padding:6px 10px"
+      >
+        ES
+      </a>
+    </div>
+  </nav>
+</header>
+
+<style>
+  .seg-opt[aria-current='page'] {
+    background: var(--color-accent);
+    color: var(--color-bg);
+  }
+  .nav a:hover {
+    color: var(--color-accent) !important;
+    border-color: var(--color-accent) !important;
+  }
+</style>
