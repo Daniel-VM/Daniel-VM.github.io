@@ -9,8 +9,7 @@ descriptionEn: "Public dataset analysis on diabetes: QC, integration, clustering
 tagsEs: ["Single-cell", "Python", "Freelance"]
 tagsEn: ["Single-cell", "Python", "Freelance"]
 media:
-  kind: illustration
-  illustration: retina-scrna
-  placeholderEs: "en curso"
-  placeholderEn: "in progress"
+  kind: cover
+  src: "new_singlecell.png"
+  position: "center"
 ---

@@ -3,7 +3,8 @@ import { defineCollection, z } from 'astro:content';
 const media = z.object({
   kind: z.enum(['cover', 'contain', 'duo', 'video', 'placeholder', 'illustration']),
   src: z.string().optional(),
-  illustration: z.enum(['coralis', 'local-ai', 'hpc', 'retina-scrna']).optional(),
+  position: z.string().optional(),
+  illustration: z.enum(['coralis']).optional(),
   placeholderEn: z.string().optional(),
   placeholderEs: z.string().optional(),
 });

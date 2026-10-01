@@ -30,7 +30,13 @@ const placeholder = es ? p.media.placeholderEs : p.media.placeholderEn;
 
   {p.media.kind === 'cover' && (
     <div class="media-box" style="height:144px;overflow:hidden;border:1px solid var(--color-divider-soft);background:var(--color-neutral-100)">
-      <img class="media-img" src={`/assets/${p.media.src}`} alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block" />
+      <img
+        class="media-img"
+        src={`/assets/${p.media.src}`}
+        alt=""
+        loading="lazy"
+        style={`width:100%;height:100%;object-fit:cover;object-position:${p.media.position ?? 'top center'};display:block`}
+      />
     </div>
   )}
   {p.media.kind === 'contain' && (
@@ -58,7 +64,7 @@ const placeholder = es ? p.media.placeholderEs : p.media.placeholderEn;
   )}
   {p.media.kind === 'illustration' && p.media.illustration && (
     <div style="height:144px;overflow:hidden;border:1px solid var(--color-divider-soft);background:var(--color-bg);padding:10px">
-      <CardIllustration name={p.media.illustration} label={placeholder} />
+      <CardIllustration name={p.media.illustration} />
     </div>
   )}
 

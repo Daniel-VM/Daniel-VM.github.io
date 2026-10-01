@@ -5,9 +5,9 @@ export const defaultLocale: Locale = 'en';
 export const ui = {
   en: {
     kicker: 'Bioinformatics Engineer',
-    heroA: 'Bioinformatics Pipelines, software,',
-    heroB: 'platforms',
-    heroP: 'I design and run the infrastructure genomic data depends on: cloud or in-house systems, web platforms, data modelling and standardisation. Built first for pathogen surveillance, it now handles pretty much any dataset a lab throws at it.',
+    heroA: 'Pipelines, platforms,',
+    heroB: 'built to last.',
+    heroP: 'Compute infrastructure, cloud or on-prem. Pipelines. Data models and standardisation. The web platform that puts it in front of a team. Most bioinformatics departments split this across several people — I build the whole stack myself, end to end.',
     cta1: 'Services',
     cta2: 'My path',
     cta3: 'Let’s talk on LinkedIn',
@@ -75,7 +75,7 @@ export const ui = {
     kicker: 'Bioinformatics Engineer · Madrid',
     heroA: 'Pipelines, plataformas,',
     heroB: 'hechas para durar.',
-    heroP: 'Monto y mantengo la infraestructura que necesita el análisis genómico: nube o infraestructura propia, plataformas web, modelado y estandarización de datos. Nació para vigilancia de patógenos y hoy aguanta cualquier tipo de dato que necesite un laboratorio.',
+    heroP: 'Infraestructura de cómputo, en la nube o propia. Pipelines. Modelos de datos y estandarización. La plataforma web que lo pone todo delante del equipo. En la mayoría de departamentos de bioinformática esto lo reparten entre varias personas — yo construyo toda la pila, de principio a fin.',
     cta1: 'Servicios',
     cta2: 'Mi camino',
     cta3: 'Hablemos por LinkedIn',
