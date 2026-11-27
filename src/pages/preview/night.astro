@@ -1,0 +1,11 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroNight from '../../components/hero/HeroNight.astro';
+import MetroMap from '../../components/MetroMap.astro';
+---
+<Layout locale="en" title="Preview Night" description="preview">
+  <main style="max-width:1180px;margin:0 auto;padding:0 28px">
+    <HeroNight lang="en" />
+    <div class="blueprint" style="position:relative;padding:18px 20px;margin-top:10px"><MetroMap lang="en" caption="How it fits together" /></div>
+  </main>
+</Layout>

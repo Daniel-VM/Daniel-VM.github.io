@@ -28,7 +28,8 @@ const external = (href?: string) => !!href && /^https?:/.test(href);
       </g>
       <g class="metro-train" aria-hidden="true">
         {lines.filter((l) => !l.dashed).map((l, i) => (
-          <circle r="4.5" fill="#fff" stroke={l.color} stroke-width="2.5">
+          <circle r="4.5" fill="#fff" stroke={l.color} stroke-width="2.5" opacity="0">
+            <set attributeName="opacity" to="1" begin={`${1.6 + i * 0.7}s`} />
             <animateMotion dur={`${9 + i * 2}s`} begin={`${1.6 + i * 0.7}s`} repeatCount="indefinite" path={l.d} />
           </circle>
         ))}
