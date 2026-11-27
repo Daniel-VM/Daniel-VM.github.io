@@ -2,11 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import ProjectsSection from '../components/ProjectsSection.astro';
-import ServicesSection from '../components/ServicesSection.astro';
 import PathSection from '../components/PathSection.astro';
 import OpenSourceSection from '../components/OpenSourceSection.astro';
 import CommunitySection from '../components/CommunitySection.astro';
-import StackSection from '../components/StackSection.astro';
+import SkillsDensity from '../components/SkillsDensity.astro';
 import { t } from '../i18n/ui';
 
 const locale = 'en' as const;
@@ -15,18 +14,19 @@ const dict = t(locale);
 
 <Layout
   locale={locale}
-  title="Daniel V. Millares, PhD — Bioinformatics Engineer"
+  title="Daniel V. Millares, PhD — Bioinformatics Platform Tech Lead"
   description={dict.heroP}
 >
-  <main id="top" style="max-width:1180px;margin:0 auto;padding:0 28px 0">
-    <Hero dict={dict} />
-    <ProjectsSection locale={locale} dict={dict} />
+  <main id="top">
+    <div style="max-width:1180px;margin:0 auto;padding:0 28px">
+      <Hero dict={dict} lang={locale} />
+    </div>
+    <SkillsDensity lang={locale} n="01" kicker={dict.navStack} title={dict.stackTitle} levels={dict.levels} keywords={dict.keywords} />
+    <div style="max-width:1180px;margin:0 auto;padding:0 28px">
+      <ProjectsSection locale={locale} dict={dict} />
+      <PathSection locale={locale} dict={dict} />
+      <OpenSourceSection locale={locale} dict={dict} />
+      <CommunitySection locale={locale} dict={dict} />
+    </div>
   </main>
-  <ServicesSection dict={dict} />
-  <div style="max-width:1180px;margin:0 auto;padding:0 28px">
-    <PathSection locale={locale} dict={dict} />
-    <OpenSourceSection locale={locale} dict={dict} />
-    <CommunitySection locale={locale} dict={dict} />
-  </div>
-  <StackSection dict={dict} />
 </Layout>

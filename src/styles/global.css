@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* ── Design tokens — ported from design/industry/styles.css ──────────── */
+/* ── Design tokens — site design tokens ──────────── */
 @theme {
   --color-bg: #f2f2f3;
   --color-surface: #e9e9ea;
@@ -333,4 +333,12 @@ figure { margin: 0; }
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation-duration: 0.25s;
+}
+
+/* ── Flash a project card when reached from the metro map ──────────── */
+.project-card { scroll-margin-top: 90px; }
+.project-card.flash { animation: card-flash 1.6s var(--ease); }
+@keyframes card-flash {
+  0%, 40% { box-shadow: 0 0 0 3px var(--color-accent), var(--shadow-lg); }
+  100% { box-shadow: none; }
 }
