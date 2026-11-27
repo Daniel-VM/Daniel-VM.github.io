@@ -79,3 +79,47 @@ export const skills: { name: string; family: Family; level: 1 | 2 | 3 }[] = [
   { name: 'AI-assisted development', family: 'ai', level: 3 },
   { name: 'Agentic AI systems', family: 'ai', level: 2 },
 ];
+
+/** Home hero copy. Plain and concrete: what he builds, and proof it works. */
+export const heroCopy = {
+  title: {
+    en: ['The complete infrastructure & data systems', 'behind omics and health data.'],
+    es: ['La infraestructura y los sistemas de datos', 'detrás de los datos ómicos y de salud.'],
+  },
+  lead: {
+    en: 'I run the CIBERINFEC bioinformatics platform: pipelines, HPC, a data hub and APIs used by national pathogen surveillance networks in Spain.',
+    es: 'Dirijo la plataforma de bioinformática de CIBERINFEC: pipelines, HPC, un data hub y APIs que usan redes nacionales de vigilancia de patógenos en España.',
+  },
+  offerTitle: { en: 'What I can take on', es: 'Qué puedo asumir' },
+};
+
+export const offers: { title: L10n; text: L10n; proof: L10n; color: string; href: string }[] = [
+  {
+    title: { en: 'Build the platform', es: 'Montar la plataforma' },
+    text: { en: 'HPC, containers, pipelines and user onboarding, from requirements to daily use.', es: 'HPC, contenedores, pipelines y acogida de usuarios, de los requisitos al uso diario.' },
+    proof: { en: '15+ researchers · 4 national projects', es: '15+ investigadores · 4 proyectos nacionales' },
+    color: '#e08a3c',
+    href: '#p-02-hpc-ciber',
+  },
+  {
+    title: { en: 'Turn lab data into a data hub', es: 'Convertir datos de laboratorio en un data hub' },
+    text: { en: 'ETL, metadata standards, OMOP mapping, APIs and access control.', es: 'ETL, estándares de metadatos, mapeo OMOP, APIs y control de acceso.' },
+    proof: { en: 'PathoCore · 2 national networks', es: 'PathoCore · 2 redes nacionales' },
+    color: '#31958f',
+    href: '#p-03-pathocore',
+  },
+  {
+    title: { en: 'Ship production pipelines', es: 'Poner pipelines en producción' },
+    text: { en: 'Nextflow and nf-core workflows, tested, versioned and documented.', es: 'Workflows Nextflow y nf-core, con tests, versiones y documentación.' },
+    proof: { en: 'nf-core/bacass maintainer', es: 'Maintainer de nf-core/bacass' },
+    color: '#6f7d95',
+    href: '#p-05-bacass',
+  },
+  {
+    title: { en: 'Run operations with AI agents', es: 'Operar con agentes de IA' },
+    text: { en: 'Agents with limited tools, budgets and human review before anything goes out.', es: 'Agentes con herramientas limitadas, presupuesto y revisión humana antes de publicar nada.' },
+    proof: { en: 'In use for courses and platform tasks', es: 'En uso para cursos y tareas de plataforma' },
+    color: '#7b5ea7',
+    href: '#p-12-cloud-agents',
+  },
+];
