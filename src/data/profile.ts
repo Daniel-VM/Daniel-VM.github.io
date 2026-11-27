@@ -87,8 +87,8 @@ export const heroCopy = {
     es: ['La infraestructura y los sistemas de datos', 'detrás de los datos ómicos y de salud.'],
   },
   lead: {
-    en: 'Platform Tech Lead, PhD. I run the CIBERINFEC bioinformatics platform: pipelines, HPC, a data hub and APIs used by national pathogen surveillance networks in Spain.',
-    es: 'Platform Tech Lead, PhD. Dirijo la plataforma de bioinformática de CIBERINFEC: pipelines, HPC, un data hub y APIs que usan redes nacionales de vigilancia de patógenos en España.',
+    en: 'I run the CIBERINFEC bioinformatics platform: pipelines, HPC, a data hub and APIs used by national pathogen surveillance networks in Spain.',
+    es: 'Dirijo la plataforma de bioinformática de CIBERINFEC: pipelines, HPC, un data hub y APIs que usan redes nacionales de vigilancia de patógenos en España.',
   },
   offerTitle: { en: 'What I can take on', es: 'Qué puedo asumir' },
 };
