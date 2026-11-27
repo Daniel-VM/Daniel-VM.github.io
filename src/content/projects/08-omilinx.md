@@ -9,9 +9,6 @@ descriptionEs: "Plataforma propia para centralizar proyectos ómicos, muestras, 
 descriptionEn: "My own platform to centralise omics projects, samples, metadata, QC, runs and results with full traceability. In active development."
 tagsEs: ["Producto", "Trazabilidad", "No-code"]
 tagsEn: ["Product", "Traceability", "No-code"]
-link: "https://omilinx.tailc8ab8e.ts.net/"
-linkLabelEs: "omilinx.io"
-linkLabelEn: "omilinx.io"
 media:
   kind: cover
   src: "omilinx-dashboard.png"

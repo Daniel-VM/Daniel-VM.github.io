@@ -9,12 +9,11 @@ interface Props {
 const { locale, dict } = Astro.props;
 
 const nav = [
+  { id: 'stack', label: dict.navStack },
   { id: 'proyectos', label: dict.navProj },
-  { id: 'servicios', label: dict.navSvc },
   { id: 'trayectoria', label: dict.navRoad },
   { id: 'open-source', label: dict.navOS },
   { id: 'comunidad', label: dict.navCom },
-  { id: 'stack', label: dict.navStack },
 ];
 ---
 
